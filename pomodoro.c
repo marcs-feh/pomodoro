@@ -75,15 +75,22 @@ int main(int argc, char* argv[argc+1]){
         cycle = str_to_pcycle(argv[2]);
         if( cycle.wt == 0 || cycle.it == 0 ){
             print_usage();
+            return EXIT_FAILURE;
         }
     }
 
     for(int n = 0; n < cycle_count; n++){
-        system("date +'work %H:%M'");
+        /* work */
+        system("sh /usr/share/pomodoro/notify.sh w");
         sleep(cycle.wt * 60);
-        system("date +'intv %H:%M'");
+
+        /* rest */
+        system("sh /usr/share/pomodoro/notify.sh i");
         sleep(cycle.it * 60);
     }
+
+    /* finished */
+    system("sh /usr/share/pomodoro/notify.sh f");
 
     return EXIT_SUCCESS;
 }
