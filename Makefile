@@ -1,9 +1,11 @@
+# User Config
 CC=cc
 CFLAGS=-O2 -pipe -Wall -std=c99 -pedantic
 LDFLAGS=-static
+#==========#
 
 pomodoro: pomodoro.c
-	$(CC) $(CFLAGS) $(LDFLAGS) pomodoro.c -o pomodoro
+	$(CC) $(CFLAGS) pomodoro.c -o pomodoro $(LDFLAGS)
 
 install: pomodoro
 	mkdir -p /usr/share/pomodoro/
