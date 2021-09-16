@@ -61,17 +61,11 @@ int main(int argc, char* argv[]){
     int n;
 
     /* check for args */
-    if(argc < 2){
-        print_usage();
-        return EXIT_FAILURE;
-    }
+    if(argc < 2){ print_usage(); return EXIT_FAILURE; }
 
     cycle_count = atoi(argv[1]);
 
-    if(cycle_count <= 0){
-        print_usage();
-        return EXIT_FAILURE;
-    }
+    if(cycle_count <= 0){ print_usage(); return EXIT_FAILURE; }
 
 
     if(argc == 2){

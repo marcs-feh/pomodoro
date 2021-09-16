@@ -9,7 +9,7 @@ pomodoro: pomodoro.c
 
 install: pomodoro
 	mkdir -p ~/.config/pomodoro/
-	cp notify.sh ~/.config/pomodoro/notify
+	cp notify ~/.config/pomodoro/notify
 	cp pomodoro /usr/bin/pomodoro
 	chmod 755 /usr/bin/pomodoro
 
