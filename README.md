@@ -8,7 +8,7 @@ for study, work, etc.
 You should probably keep the source code as it is the best way to modify this
 software, notification events are handled by a simple shell script that is
 called at runtime, assuming you have some sort of POSIX complaint shell, just
-edit `notify.sh` to your liking, an example is playing a sound notification
+edit `notify` to your liking, an example is playing a sound notification
 with mpv or using `xsetroot` to inform you through a status bar, this is up to
 the user, by default an `echo` command is used.
 
