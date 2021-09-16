@@ -4,7 +4,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-
 struct pcycle {
     unsigned int wt;
     unsigned int it;
@@ -27,7 +26,10 @@ static pcycle_t str_to_pcycle( char* str ){
     unsigned long int comma_pos = 0;
     unsigned long int length = strlen(str);
 
-    for( int i = 0; i < length; i++){
+    int i;
+    int j;
+
+    for( i = 0; i < length; i++){
         if( str[i] != ':' && str[i] != '0' && str[i] != '1' && str[i] != '2' &&
             str[i] != '3' && str[i] != '4' && str[i] != '5' && str[i] != '6' &&
             str[i] != '7' && str[i] != '8' && str[i] != '9'){
@@ -35,7 +37,7 @@ static pcycle_t str_to_pcycle( char* str ){
         }
     }
 
-    for(int i = 0; str[i] != ':' && i < length; i++ ){
+    for(i = 0; str[i] != ':' && i < length; i++ ){
         numbuffer[i] = str[i];
         comma_pos = i + 2;
     }
@@ -43,7 +45,7 @@ static pcycle_t str_to_pcycle( char* str ){
     cycle.wt = atoi(numbuffer);
     memset(numbuffer, 0, 64);
 
-    for(int j = comma_pos; j < length; j++){
+    for(j = comma_pos; j < length; j++){
         numbuffer[j - comma_pos] = str[j];
     }
 
@@ -52,22 +54,25 @@ static pcycle_t str_to_pcycle( char* str ){
     return cycle;
 }
 
-int main(int argc, char* argv[argc+1]){
+int main(int argc, char* argv[]){
+    unsigned int cycle_count;
+    pcycle_t def_cycle = {25, 5};
+    pcycle_t cycle;
+    int n;
+
     /* check for args */
     if(argc < 2){
         print_usage();
         return EXIT_FAILURE;
     }
 
-    unsigned int cycle_count = atoi(argv[1]);
+    cycle_count = atoi(argv[1]);
 
     if(cycle_count <= 0){
         print_usage();
         return EXIT_FAILURE;
     }
 
-    pcycle_t def_cycle = {25, 5};
-    pcycle_t cycle;
 
     if(argc == 2){
         cycle = def_cycle;
@@ -79,18 +84,18 @@ int main(int argc, char* argv[argc+1]){
         }
     }
 
-    for(int n = 0; n < cycle_count; n++){
+    for(n = 0; n < cycle_count; n++){
         /* work */
-        system("sh /usr/share/pomodoro/notify.sh w");
+        system("sh ~/.config/pomodoro/notify w");
         sleep(cycle.wt * 60);
 
         /* rest */
-        system("sh /usr/share/pomodoro/notify.sh i");
+        system("sh ~/.config/pomodoro/notify i");
         sleep(cycle.it * 60);
     }
 
     /* finished */
-    system("sh /usr/share/pomodoro/notify.sh f");
+    system("sh ~/.config/pomodoro/notify.sh f");
 
     return EXIT_SUCCESS;
 }
