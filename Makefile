@@ -1,8 +1,10 @@
-# User Config
+# User Config #
 CC=cc
 CFLAGS=-O2 -pipe -Wall -std=c89 -pedantic
-LDFLAGS=-static
-#==========#
+LDFLAGS=
+#=============#
+
+.PHONY: install uninstall clean
 
 pomodoro: pomodoro.c
 	$(CC) $(CFLAGS) pomodoro.c -o pomodoro $(LDFLAGS)
@@ -18,5 +20,4 @@ uninstall:
 	rm /usr/bin/pomodoro
 
 clean:
-	rm pomodoro
-
+	rm -f pomodoro

@@ -1,8 +1,8 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
 #include <stddef.h>
-#include <stdlib.h>
+#include <unistd.h>
 
 struct pcycle {
     unsigned int wt;
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
     }
 
     /* finished */
-    system("sh ~/.config/pomodoro/notify.sh f");
+    system("sh ~/.config/pomodoro/notify f");
 
     return EXIT_SUCCESS;
 }
